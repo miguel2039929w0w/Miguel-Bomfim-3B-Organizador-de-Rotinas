@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChronoPulse 3D - Organizador de Rotinas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Cenário com Objetos 3D em Degradê -->
+  <div class="bg-3d-scene">
+    <div class="shape-3d cube"></div>
+    <div class="shape-3d sphere"></div>
+    <div class="shape-3d pyramid"></div>
+    <div class="shape-3d torus"></div>
+  </div>
+
+  <!-- Cabeçalho Principal -->
+  <header>
+    <h1 class="main-title">Miguel Bomfim</h1>
+    <p class="subtitle">Seu Gestor Estratégico de Rotinas e Estilo de Vida</p>
+  </header>
+
+  <!-- Grid de Cards de Rotinas -->
+  <main class="container">
+    <div class="cards-grid">
+
+      <!-- Card 1: Estudo -->
+      <article class="card">
+        <div>
+          <div class="card-icon">📚</div>
+          <h2 class="card-title">Estudo</h2>
+          <p class="card-desc">Foco em aprendizado contínuo, novas tecnologias e aperfeiçoamento acadêmico.</p>
+        </div>
+        <div class="card-buttons">
+          <button class="btn btn-secondary" onclick="openModal('estudo')">Detalhes</button>
+          <a href="estudo.html" class="btn btn-primary">Acessar</a>
+        </div>
+      </article>
+
+      <!-- Card 2: Trabalho -->
+      <article class="card">
+        <div>
+          <div class="card-icon">💼</div>
+          <h2 class="card-title">Trabalho</h2>
+          <p class="card-desc">Organização de projetos, cumprimento de metas e produtividade diária.</p>
+        </div>
+        <div class="card-buttons">
+          <button class="btn btn-secondary" onclick="openModal('trabalho')">Detalhes</button>
+          <a href="trabalho.html" class="btn btn-primary">Acessar</a>
+        </div>
+      </article>
+
+      <!-- Card 3: Lazer -->
+      <article class="card">
+        <div>
+          <div class="card-icon">🎮</div>
+          <h2 class="card-title">Lazer</h2>
+          <p class="card-desc">Momentos para relaxar, assistir filmes, jogar e renovar as energias.</p>
+        </div>
+        <div class="card-buttons">
+          <button class="btn btn-secondary" onclick="openModal('lazer')">Detalhes</button>
+          <a href="lazer.html" class="btn btn-primary">Acessar</a>
+        </div>
+      </article>
+
+      <!-- Card 4: Hobby -->
+      <article class="card">
+        <div>
+          <div class="card-icon">🎨</div>
+          <h2 class="card-title">Hobby</h2>
+          <p class="card-desc">Dedicação às suas paixões pessoais, arte, música e projetos autorais.</p>
+        </div>
+        <div class="card-buttons">
+          <button class="btn btn-secondary" onclick="openModal('hobby')">Detalhes</button>
+          <a href="hobby.html" class="btn btn-primary">Acessar</a>
+        </div>
+      </article>
+
+      <!-- Card 5: Esportes -->
+      <article class="card">
+        <div>
+          <div class="card-icon">⚡</div>
+          <h2 class="card-title">Esportes</h2>
+          <p class="card-desc">Treinos, atividades ao ar livre e superação de limites físicos.</p>
+        </div>
+        <div class="card-buttons">
+          <button class="btn btn-secondary" onclick="openModal('esportes')">Detalhes</button>
+          <a href="esportes.html" class="btn btn-primary">Acessar</a>
+        </div>
+      </article>
+
+      <!-- Card 6: Saúde -->
+      <article class="card">
+        <div>
+          <div class="card-icon">🩺</div>
+          <h2 class="card-title">Saúde</h2>
+          <p class="card-desc">Cuidado integral com a mente, hidratação, sono e boa alimentação.</p>
+        </div>
+        <div class="card-buttons">
+          <button class="btn btn-secondary" onclick="openModal('saude')">Detalhes</button>
+          <a href="saude.html" class="btn btn-primary">Acessar</a>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- Modal Global -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModalOnOverlay(event)">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <h3 class="modal-header" id="modalTitle">Título da Rotina</h3>
+      <div class="modal-body" id="modalBody">
+        <p>Conteúdo da rotina aqui...</p>
+      </div>
+      <a href="#" id="modalLink" class="btn btn-primary" style="display: block; text-align: center;">Ir para a página completa</a>
+    </div>
+  </div>
+
+  <!-- JavaScript Embutido -->
+  <script>
+    const modalData = {
+      estudo: {
+        title: "Rotina de Estudos",
+        content: "Organize seus blocos de foco com técnicas como Pomodoro. Priorize disciplinas complexas no início do dia e faça revisões espaçadas.",
+        link: "estudo.html"
+      },
+      trabalho: {
+        title: "Rotina de Trabalho",
+        content: "Gerencie tarefas prioritárias, estruture reuniões objetivas e mantenha a caixa de entrada limpa. Evite multitarefas.",
+        link: "trabalho.html"
+      },
+      lazer: {
+        title: "Rotina de Lazer",
+        content: "Reserve horários intencionais para desacelerar. O descanso de qualidade aumenta diretamente a capacidade criativa.",
+        link: "lazer.html"
+      },
+      hobby: {
+        title: "Rotina de Hobbies",
+        content: "Pratique atividades sem a pressão de alta performance. Desenhos, escrita ou música estimulam a plasticidade cerebral.",
+        link: "hobby.html"
+      },
+      esportes: {
+        title: "Rotina de Esportes",
+        content: "Mantenha consistência nos exercícios semanais. Alterne entre atividades aeróbicas e de fortalecimento muscular.",
+        link: "esportes.html"
+      },
+      saude: {
+        title: "Rotina de Saúde",
+        content: "Monitore o sono, garanta a ingestão adequada de água diária e priorize alimentos naturais para sustentação energética.",
+        link: "saude.html"
+      }
+    };
+
+    function openModal(key) {
+      const data = modalData[key];
+      if (data) {
+        document.getElementById('modalTitle').innerText = data.title;
+        document.getElementById('modalBody').innerHTML = `<p>${data.content}</p>`;
+        document.getElementById('modalLink').href = data.link;
+        document.getElementById('modalOverlay').classList.add('active');
+      }
+    }
+
+    function closeModal() {
+      document.getElementById('modalOverlay').classList.remove('active');
+    }
+
+    function closeModalOnOverlay(event) {
+      if (event.target.id === 'modalOverlay') {
+        closeModal();
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,332 @@
+/* ==========================================================================
+   ESTILOS GERAIS & TEMA (Fundo Preto com Degradê Neon & Visual 3D)
+   ========================================================================== */
+:root {
+  --bg-color: #050508;
+  --card-bg: rgba(20, 20, 30, 0.65);
+  --border-color: rgba(255, 255, 255, 0.1);
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0b8;
+  
+  /* Degradê de Três Cores: Violeta, Ciano e Rosa */
+  --grad-color-1: #8a2be2; /* Violeta */
+  --grad-color-2: #00f2fe; /* Ciano */
+  --grad-color-3: #ff007f; /* Rosa Neon */
+  --gradient-main: linear-gradient(135deg, var(--grad-color-1), var(--grad-color-2), var(--grad-color-3));
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ==========================================================================
+   FUNDO COM OBJETOS 3D EM DEGRADÊ
+   ========================================================================== */
+.bg-3d-scene {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+  perspective: 1000px;
+  pointer-events: none;
+}
+
+/* Formas 3D Flutuantes */
+.shape-3d {
+  position: absolute;
+  transform-style: preserve-3d;
+  animation: float3D 12s infinite ease-in-out alternate;
+  opacity: 0.7;
+}
+
+.cube {
+  width: 80px;
+  height: 80px;
+  top: 15%;
+  left: 10%;
+  transform: rotateX(45deg) rotateY(45deg);
+  background: var(--gradient-main);
+  box-shadow: 0 0 30px rgba(0, 242, 254, 0.5);
+  border-radius: 16px;
+  animation-duration: 14s;
+}
+
+.sphere {
+  width: 120px;
+  height: 120px;
+  top: 60%;
+  right: 12%;
+  border-radius: 50%;
+  background: var(--gradient-main);
+  box-shadow: 0 0 40px rgba(255, 0, 127, 0.6);
+  animation-duration: 10s;
+  animation-delay: -3s;
+}
+
+.pyramid {
+  width: 0;
+  height: 0;
+  top: 70%;
+  left: 15%;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-bottom: 90px solid var(--grad-color-2);
+  filter: drop-shadow(0 0 25px var(--grad-color-1));
+  animation-duration: 16s;
+  animation-delay: -5s;
+}
+
+.torus {
+  width: 90px;
+  height: 90px;
+  top: 20%;
+  right: 18%;
+  border: 20px solid transparent;
+  border-top-color: var(--grad-color-3);
+  border-right-color: var(--grad-color-1);
+  border-bottom-color: var(--grad-color-2);
+  border-radius: 50%;
+  filter: drop-shadow(0 0 20px rgba(138, 43, 226, 0.8));
+  animation-duration: 18s;
+}
+
+@keyframes float3D {
+  0% {
+    transform: translateY(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1);
+  }
+  50% {
+    transform: translateY(-40px) rotateX(180deg) rotateY(90deg) rotateZ(45deg) scale(1.1);
+  }
+  100% {
+    transform: translateY(20px) rotateX(360deg) rotateY(180deg) rotateZ(90deg) scale(0.95);
+  }
+}
+
+/* ==========================================================================
+   CABEÇALHO & TÍTULO
+   ========================================================================== */
+header {
+  text-align: center;
+  padding: 3rem 1rem 2rem 1rem;
+}
+
+.main-title {
+  font-size: 3rem;
+  font-weight: 800;
+  background: var(--gradient-main);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+/* ==========================================================================
+   GRID DE CARDS (MODERNO COM GLASSMORPHISM E TILT)
+   ========================================================================== */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto 4rem auto;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  perspective: 1000px;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 2rem;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--gradient-main);
+}
+
+.card:hover {
+  transform: translateY(-10px) rotateX(4deg) scale(1.02);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 242, 254, 0.2);
+}
+
+.card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  background: var(--gradient-main);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+
+.card-desc {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.card-buttons {
+  display: flex;
+  gap: 0.75rem;
+}
+
+/* Botões */
+.btn {
+  padding: 0.75rem 1.25rem;
+  border-radius: 12px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  font-size: 0.9rem;
+  text-align: center;
+  flex: 1;
+}
+
+.btn-primary {
+  background: var(--gradient-main);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4);
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+  box-shadow: 0 6px 20px rgba(255, 0, 127, 0.6);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ==========================================================================
+   MODAL
+   ========================================================================== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  background: #0d0d14;
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
+  padding: 2.5rem;
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+  transform: translateY(30px) scale(0.95);
+  transition: all 0.3s ease;
+  box-shadow: 0 0 50px rgba(138, 43, 226, 0.3);
+}
+
+.modal-overlay.active .modal-content {
+  transform: translateY(0) scale(1);
+}
+
+.modal-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.modal-close:hover {
+  color: #fff;
+}
+
+.modal-header {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  background: var(--gradient-main);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.modal-body {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.modal-body ul {
+  margin-top: 1rem;
+  padding-left: 1.2rem;
+}
+
+.modal-body li {
+  margin-bottom: 0.5rem;
+}
